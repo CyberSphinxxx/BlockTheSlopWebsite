@@ -1,0 +1,68 @@
+/*
+ * LAYER 3 — Non-color tokens: spacing, type, layout, motion, focus.
+ * Marketing-scale steps built on the specimen's 4/8/12/16/24/32 px base.
+ */
+:root {
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* Borders and radii — crisp, per the specimen */
+  --border-width: 2px;
+  --radius-control: 3px;
+  --radius-panel: 4px;
+
+  /* Hazard stripe heights (identity motif, used sparingly) */
+  --stripe-height: 8px;
+  --stripe-height-sm: 4px;
+
+  /* Type — next/font variables are set on <body>; fallbacks cover no-JS/CSS edge cases */
+  --font-heading:
+    var(--font-barlow-condensed, "Barlow Condensed"), "Arial Narrow", system-ui, sans-serif;
+  --font-body:
+    var(--font-barlow-semi, "Barlow Semi Condensed"), "Segoe UI", system-ui, -apple-system,
+    sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  --fw-body: 400;
+  --fw-medium: 500;
+  --fw-strong: 700;
+
+  /* Type scale (condensed headings, readable body) */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.1875rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.625rem;
+  --text-3xl: 3.25rem;
+  --text-4xl: 4rem;
+
+  /* Line heights — body copy needs more air than the popup specimen */
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-body: 1.65;
+
+  /* Measure: 65–75 characters for long-form pages */
+  --measure-prose: 68ch;
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-prose: 46rem;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* Focus */
+  --focus-width: 3px;
+  --focus-offset: 2px;
+}

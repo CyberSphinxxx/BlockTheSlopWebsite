@@ -1,0 +1,41 @@
+{
+  "name": "block-the-slop-website",
+  "version": "1.0.0",
+  "description": "Public website for BlockTheSlop — AI Slop Blocker for YouTube. Static, content-first, privacy-respecting.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check:no-raw-colors": "node scripts/check-no-raw-colors.mjs"
+  },
+  "dependencies": {
+    "next": "15.5.26",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/eslintrc": "^3.3.7",
+    "@playwright/test": "1.63.0",
+    "@types/node": "25.4.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.3.6",
+    "prettier": "3.9.8",
+    "typescript": "5.9.3",
+    "vitest": "5.0.2"
+  }
+}

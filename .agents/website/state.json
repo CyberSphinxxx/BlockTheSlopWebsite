@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "project": "BlockTheSlop-Website",
+  "status": "code-complete-preview-pending-owner",
+  "lastUpdated": "2026-09-28T19:45:00Z",
+  "sourceCommit": "7ccdea7 (BlockTheSlop extension, branch redesign/specimen — facts reviewed, source untouched)",
+  "websiteCommit": null,
+  "productionOrigin": "https://block-the-slop-website.vercel.app",
+  "previewUrl": null,
+  "requirements": {
+    "WEB-01": "PASS",
+    "WEB-02": "PASS",
+    "WEB-03": "PASS",
+    "WEB-04": "PASS",
+    "WEB-05": "PASS",
+    "WEB-06": "PASS",
+    "WEB-07": "PASS",
+    "WEB-08": "PASS",
+    "WEB-09": "PASS",
+    "WEB-10": "PASS",
+    "WEB-11": "PASS",
+    "WEB-12": "PASS",
+    "WEB-13": "PASS",
+    "WEB-14": "PASS",
+    "WEB-15": "PASS",
+    "WEB-16": "PASS",
+    "WEB-17": "PASS",
+    "WEB-18": "PASS",
+    "WEB-19": "PASS",
+    "WEB-20": "NOT_APPLICABLE",
+    "WEB-21": "PASS",
+    "WEB-22": "PASS",
+    "WEB-23": "PASS",
+    "WEB-24": "PASS",
+    "WEB-25": "PASS",
+    "WEB-26": "PASS",
+    "WEB-27": "OWNER_ACTION",
+    "WEB-28": "PASS",
+    "WEB-29": "PASS",
+    "WEB-30": "PASS",
+    "WEB-31": "PASS",
+    "WEB-32": "OWNER_ACTION",
+    "WEB-33": "OWNER_ACTION",
+    "WEB-34": "OWNER_ACTION",
+    "WEB-35": "PASS"
+  },
+  "evidence": {
+    "WEB-01": {
+      "check": "Standalone sibling project at C:\\L3mxr\\Github Repositories\\BlockTheSlop-Website; own git repo, npm lockfile, strict TS; Next.js 15.5.26 build succeeds; extension repo untouched",
+      "command": "npm run build && git -C ../BlockTheSlop status --porcelain (only pre-existing kit/specimen files)",
+      "status_date": "2026-09-28"
+    },
+    "WEB-02": {
+      "check": "content/site.ts is the claim inventory with sources; copy-guard unit tests block unsupported claims",
+      "command": "npx vitest run (24/24 incl. claim guards)",
+      "status_date": "2026-09-28"
+    },
+    "WEB-03": {
+      "check": "Forbidden-claim tests: perfect detection, user counts, ratings, pricing, affiliation, offline-website claims",
+      "command": "npx vitest run tests/copy.test.tsx",
+      "status_date": "2026-09-28"
+    },
+    "WEB-04": {
+      "check": "site.config.ts single source; tests validate origin format, no guessed store URL, no invented email",
+      "command": "npx vitest run tests/config.test.ts",
+      "status_date": "2026-09-28"
+    },
+    "WEB-05": {
+      "check": ".agents/website/state.json + PROGRESS.md parse and match tree",
+      "command": "node -e \"JSON.parse(require('fs').readFileSync('.agents/website/state.json'))\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-06": {
+      "check": "Home hero answers what/where/how/privacy/limit/next-action; verified by E2E + rendered inspection",
+      "command": "npx playwright test e2e/pages.spec.ts -g \"home explains\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-07": {
+      "check": "How-it-works explains metadata reads, separate AI/slop dimensions, policy, recovery, limits; traced to README/docs",
+      "command": "npx playwright test e2e/seo.spec.ts -g \"how-it-works\" + manual copy trace",
+      "status_date": "2026-09-28"
+    },
+    "WEB-08": {
+      "check": "Features page built from verified FEATURE_GROUPS; optional features badged 'Optional / default off'",
+      "command": "manual page audit vs extension README/CWS_SUBMISSION",
+      "status_date": "2026-09-28"
+    },
+    "WEB-09": {
+      "check": "10 required FAQ answers present with factual boundaries; internal links resolve",
+      "command": "npx playwright test e2e/pages.spec.ts -g \"every internal nav and footer link resolves\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-10": {
+      "check": "/privacy returns 200 without login; separates extension-local vs website/Vercel; describes localStorage theme key",
+      "command": "curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:3111/privacy -> 200; npx playwright test e2e/seo.spec.ts",
+      "status_date": "2026-09-28"
+    },
+    "WEB-11": {
+      "check": "Support page links only to real GitHub issues URL; no dead form; no invented email",
+      "command": "grep for mailto: (none); link check in pages.spec.ts",
+      "status_date": "2026-09-28"
+    },
+    "WEB-12": {
+      "check": "Changelog sourced from CURRENT-RELEASE/CWS_SUBMISSION for 1.0.0 only; no invented timeline",
+      "command": "manual trace; unit test blocks specimen statistics",
+      "status_date": "2026-09-28"
+    },
+    "WEB-13": {
+      "check": "Pre-store CTA is a non-interactive aria-disabled notice with useful links; E2E verifies no install link exists",
+      "command": "npx playwright test e2e/pages.spec.ts -g \"honest pre-store CTA\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-14": {
+      "check": "404 real status + helpful content; nav/footer work; mobile nav opens/closes/navigates",
+      "command": "npx playwright test e2e/seo.spec.ts e2e/pages.spec.ts",
+      "status_date": "2026-09-28"
+    },
+    "WEB-15": {
+      "check": "Specimen visual DNA: steel/ink/yellow, Barlow Condensed headings, 2px borders, hazard stripe (header + CTA band only); spacious marketing layout",
+      "command": "visual matrix screenshots evidence/artifacts/visual/*.png vs reference/specimen-light.png/dark.png",
+      "status_date": "2026-09-28"
+    },
+    "WEB-16": {
+      "check": "4-layer style system; components reference only semantic tokens",
+      "command": "npm run check:no-raw-colors (0 violations, 26 files)",
+      "status_date": "2026-09-28"
+    },
+    "WEB-17": {
+      "check": "system/light/dark switch, persisted in localStorage with storage-denied fallback; no-flash inline script; no hydration mismatch; typed registry",
+      "command": "npx playwright test e2e/pages.spec.ts -g \"theme\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-18": {
+      "check": "0px horizontal overflow on all routes at 320px; 44px touch targets; full screenshot matrix at 320/375/768/1280/1440 both themes",
+      "command": "npx playwright test e2e/accessibility.spec.ts -g \"reflow\"; visual matrix",
+      "status_date": "2026-09-28"
+    },
+    "WEB-19": {
+      "check": "axe serious/critical violations = 0 on every route in both themes; skip link + focus management; landmarks/headings verified; reduced-motion forced to 0.01ms",
+      "command": "npx playwright test e2e/accessibility.spec.ts (17 passed)",
+      "status_date": "2026-09-28"
+    },
+    "WEB-20": {
+      "check": "No photos used; hero is a labeled illustrative mock (aria-label + caption state 'Illustration, not a live capture'); OG image generated in-repo; fonts OFL with license file",
+      "command": "manual media manifest review",
+      "status_date": "2026-09-28"
+    },
+    "WEB-21": {
+      "check": "Every route: 200, unique title/description, exactly one H1, canonical on production origin, OG/Twitter, SSR content",
+      "command": "npx playwright test e2e/seo.spec.ts (route loop)",
+      "status_date": "2026-09-28"
+    },
+    "WEB-22": {
+      "check": "Canonical origin from single SITE_URL; preview noindex via Vercel X-Robots-Tag (default) + robots.ts guard; no preview URL in metadata",
+      "command": "npx playwright test e2e/seo.spec.ts; .env.example documents NEXT_PUBLIC_SITE_URL",
+      "status_date": "2026-09-28"
+    },
+    "WEB-23": {
+      "check": "robots.txt has Sitemap + Host on production origin; sitemap.xml lists exactly the 7 canonical routes; no localhost/preview",
+      "command": "npx playwright test e2e/seo.spec.ts -g \"robots|sitemap\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-24": {
+      "check": "Branded OG image (1200x630 PNG via next/og) with absolute URL; twitter summary_large_image",
+      "command": "npx playwright test e2e/seo.spec.ts -g \"opengraph image\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-25": {
+      "check": "SoftwareApplication JSON-LD with truthful fields only (no rating/offer/price/store URL); renders in served HTML",
+      "command": "curl -s http://127.0.0.1:3111/ | grep application/ld+json; JsonLd.tsx source review",
+      "status_date": "2026-09-28"
+    },
+    "WEB-26": {
+      "check": "Original copy per CONTENT-SEO briefs; no filler pages; copy-guard tests reject placeholder text",
+      "command": "npx vitest run tests/copy.test.tsx; editorial review",
+      "status_date": "2026-09-28"
+    },
+    "WEB-27": {
+      "check": "Search Console requires owner account access",
+      "command": "OWNER_ACTION: create property for production origin, submit sitemap.xml",
+      "status_date": "2026-09-28"
+    },
+    "WEB-28": {
+      "check": "Network test: zero third-party requests; no analytics/cookies/forms/embeds; fonts and images self-hosted",
+      "command": "npx playwright test e2e/pages.spec.ts -g \"no third-party requests\"",
+      "status_date": "2026-09-28"
+    },
+    "WEB-29": {
+      "check": "/privacy accurately describes extension (local processing, per-class deletes, session recovery) AND website (Vercel hosting, one localStorage theme key)",
+      "command": "manual audit vs docs/PRIVACY_POLICY.md",
+      "status_date": "2026-09-28"
+    },
+    "WEB-30": {
+      "check": "Full gate on final tree: format, lint, typecheck, 24 unit tests, build, 63 E2E (incl. axe + SEO + visual matrix), token scan",
+      "command": "npm run build && npx playwright test && npx vitest run && npm run lint && npm run format:check && npx tsc --noEmit",
+      "status_date": "2026-09-28"
+    },
+    "WEB-31": {
+      "check": "All routes static (prerendered); ~103kB shared First Load JS; fonts preloaded self-hosted woff2 (~90KB total); no layout-shift-prone media; field data does not exist yet",
+      "command": "next build output review; resource inspection",
+      "status_date": "2026-09-28"
+    },
+    "WEB-32": {
+      "check": "Vercel account not available in this workspace",
+      "command": "OWNER_ACTION: import repo into Vercel, deploy preview, re-run smoke on the preview URL",
+      "status_date": "2026-09-28"
+    },
+    "WEB-33": {
+      "check": "No domain supplied",
+      "command": "OWNER_ACTION: docs/OPERATIONS.md documents DNS + canonical cutover steps",
+      "status_date": "2026-09-28"
+    },
+    "WEB-34": {
+      "check": "Production deploy withheld pending owner review",
+      "command": "OWNER_ACTION: review preview + evidence, then approve production deploy",
+      "status_date": "2026-09-28"
+    },
+    "WEB-35": {
+      "check": "docs/OPERATIONS.md covers copy edits, theme addition, store URL, domain rotation, rollback, privacy updates",
+      "command": "manual review",
+      "status_date": "2026-09-28"
+    }
+  },
+  "ownerActions": [
+    "Push BlockTheSlop-Website to a GitHub repository (currently local-only at C:\\L3mxr\\Github Repositories\\BlockTheSlop-Website).",
+    "Connect the repository to a Vercel project (framework: Next.js, no env vars required) and deploy a PREVIEW.",
+    "After first production deploy, set NEXT_PUBLIC_SITE_URL (or site.config.ts SITE_URL) to the actual production vercel.app URL and redeploy so canonicals/sitemap/OG match the live origin.",
+    "Review the preview and QA evidence, then approve production deployment (not done automatically).",
+    "Supply the custom domain when chosen; then update SITE_URL, verify DNS per Vercel's project records, and set one canonical host with redirect.",
+    "Supply the published Chrome Web Store listing URL; set content/site.ts storeUrl to enable the real install CTA.",
+    "Optionally supply a verified support contact if the GitHub issues channel is not sufficient.",
+    "Create the Google Search Console property for the production origin and submit /sitemap.xml.",
+    "Paste the public /privacy URL into the CWS dashboard Privacy practices tab."
+  ]
+}

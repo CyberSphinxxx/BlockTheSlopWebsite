@@ -1,0 +1,8 @@
+node_modules/
+.next/
+out/
+evidence/artifacts/
+playwright-report/
+test-results/
+package-lock.json
+public/fonts/
