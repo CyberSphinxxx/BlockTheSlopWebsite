@@ -4,7 +4,7 @@
   "status": "code-complete-preview-pending-owner",
   "lastUpdated": "2026-09-28T19:45:00Z",
   "sourceCommit": "7ccdea7 (BlockTheSlop extension, branch redesign/specimen — facts reviewed, source untouched)",
-  "websiteCommit": "ac8a62d (local main, not pushed)",
+  "websiteCommit": "f91e92b (local main, not pushed)",
   "productionOrigin": "https://block-the-slop-website.vercel.app",
   "previewUrl": null,
   "requirements": {
