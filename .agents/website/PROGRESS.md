@@ -3,7 +3,7 @@
 ## Current state
 
 - Date/time: 2026-09-28 (final gate run)
-- Website commit: first commit on `main` (local repo, not yet pushed — owner action)
+- Website commit: `ac8a62d` initial release + ledger hash bookkeeping commits; working tree clean; local `main`, not pushed (owner action). Note: `state.json.websiteCommit` intentionally records the initial-release hash `ac8a62d` (the code state all evidence refers to); the two follow-up commits touch only ledger bookkeeping.
 - Extension source commit reviewed: `7ccdea7` (branch `redesign/specimen`) — **read-only**; extension files, build, and release artifacts untouched
 - Current phase and next requirement: code-complete; all executable requirements PASS; remaining items are owner actions
 - Preview URL: none yet (Vercel account not connected in this workspace)
