@@ -2,8 +2,8 @@
 
 ## Current state
 
-- Date/time: 2026-09-28 (final gate run)
-- Website commit: `ac8a62d` initial release + ledger hash bookkeeping commits; working tree clean; local `main`, not pushed (owner action). Note: `state.json.websiteCommit` intentionally records the initial-release hash `ac8a62d` (the code state all evidence refers to); the two follow-up commits touch only ledger bookkeeping.
+- Date/time: 2026-09-29 (copy-simplification + visual polish pass)
+- Website commit: `ac8a62d` initial release + ledger hash bookkeeping commits; 2026-09-29 pass simplifies copy site-wide, swaps the dark-theme border from near-white to gray, and fixes three real-browser layout bugs (see Decision log and Visual review); local `main`, not pushed (owner action). Note: `state.json.websiteCommit` intentionally records the initial-release hash `ac8a62d` (the code state all evidence refers to); the two follow-up commits touch only ledger bookkeeping.
 - Extension source commit reviewed: `7ccdea7` (branch `redesign/specimen`) — **read-only**; extension files, build, and release artifacts untouched
 - Current phase and next requirement: code-complete; all executable requirements PASS; remaining items are owner actions
 - Preview URL: none yet (Vercel account not connected in this workspace)
@@ -12,18 +12,22 @@
 
 ## Decision log
 
-| Date       | Decision                                                                                                                            | Evidence or reason                                                                                                                                                     | Affected requirements |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| 2026-09-28 | Next.js 15 App Router, React 19, npm, strict TS per kit default                                                                     | No materially simpler stack meets metadata/SEO/E2E requirements; kit default accepted                                                                                  | WEB-01                |
-| 2026-09-28 | Sibling project created (parent dir was writable); own git repo initialized locally                                                 | `C:\L3mxr\Github Repositories\BlockTheSlop-Website` exists next to the extension checkout                                                                              | WEB-01                |
-| 2026-09-28 | Hand-written 4-layer CSS (palette → themes → tokens → components) instead of Tailwind                                               | Specimen defines a token architecture; a `check-no-raw-colors` CI script enforces the component/theme boundary                                                         | WEB-15, WEB-16        |
-| 2026-09-28 | Barlow Condensed 500/700 for headings (from extension repo) + Barlow Semi Condensed 400/600 for body (from @fontsource OFL package) | Condensed-only body is tiring at paragraph length, per DESIGN-SYSTEM.md; both OFL, self-hosted, license file committed                                                 | WEB-15                |
-| 2026-09-28 | Hero uses a labeled illustrative "hidden card" mock instead of a fixture screenshot                                                 | No real-YouTube capture exists in this workspace; DESIGN-SYSTEM.md forbids presenting fixtures as live YouTube; caption states it is an illustration                   | WEB-20                |
-| 2026-09-28 | `SoftwareApplication` JSON-LD shipped without offer/rating/store fields                                                             | Fields are truthful (name, category, OS, url, author, version, license); Google's rich-result offer requirement means no rich result is claimed until store URL exists | WEB-25                |
-| 2026-09-28 | Changelog page shipped with only 1.0.0 (2026-09-27)                                                                                 | Source-backed via CURRENT-RELEASE.md / CWS_SUBMISSION.md; no invented timeline                                                                                         | WEB-12                |
-| 2026-09-28 | ESLint pinned to v9                                                                                                                 | eslint-config-next@16 plugin peer range does not support ESLint 10                                                                                                     | WEB-01                |
-| 2026-09-28 | Theme switch reads the DOM attribute via `useSyncExternalStore` (MutationObserver)                                                  | Avoids React 19 setState-in-effect lint error and hydration mismatch; storage denial degrades to session-only theme                                                    | WEB-17                |
-| 2026-09-28 | `SITE_URL` declared as `https://block-the-slop-website.vercel.app` (overridable via `NEXT_PUBLIC_SITE_URL`)                         | One explicit production value per kit; verified live once owner deploys                                                                                                | WEB-04, WEB-22        |
+| Date       | Decision                                                                                                                            | Evidence or reason                                                                                                                                                              | Affected requirements  |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| 2026-09-28 | Next.js 15 App Router, React 19, npm, strict TS per kit default                                                                     | No materially simpler stack meets metadata/SEO/E2E requirements; kit default accepted                                                                                           | WEB-01                 |
+| 2026-09-28 | Sibling project created (parent dir was writable); own git repo initialized locally                                                 | `C:\L3mxr\Github Repositories\BlockTheSlop-Website` exists next to the extension checkout                                                                                       | WEB-01                 |
+| 2026-09-28 | Hand-written 4-layer CSS (palette → themes → tokens → components) instead of Tailwind                                               | Specimen defines a token architecture; a `check-no-raw-colors` CI script enforces the component/theme boundary                                                                  | WEB-15, WEB-16         |
+| 2026-09-28 | Barlow Condensed 500/700 for headings (from extension repo) + Barlow Semi Condensed 400/600 for body (from @fontsource OFL package) | Condensed-only body is tiring at paragraph length, per DESIGN-SYSTEM.md; both OFL, self-hosted, license file committed                                                          | WEB-15                 |
+| 2026-09-28 | Hero uses a labeled illustrative "hidden card" mock instead of a fixture screenshot                                                 | No real-YouTube capture exists in this workspace; DESIGN-SYSTEM.md forbids presenting fixtures as live YouTube; caption states it is an illustration                            | WEB-20                 |
+| 2026-09-28 | `SoftwareApplication` JSON-LD shipped without offer/rating/store fields                                                             | Fields are truthful (name, category, OS, url, author, version, license); Google's rich-result offer requirement means no rich result is claimed until store URL exists          | WEB-25                 |
+| 2026-09-28 | Changelog page shipped with only 1.0.0 (2026-09-27)                                                                                 | Source-backed via CURRENT-RELEASE.md / CWS_SUBMISSION.md; no invented timeline                                                                                                  | WEB-12                 |
+| 2026-09-28 | ESLint pinned to v9                                                                                                                 | eslint-config-next@16 plugin peer range does not support ESLint 10                                                                                                              | WEB-01                 |
+| 2026-09-28 | Theme switch reads the DOM attribute via `useSyncExternalStore` (MutationObserver)                                                  | Avoids React 19 setState-in-effect lint error and hydration mismatch; storage denial degrades to session-only theme                                                             | WEB-17                 |
+| 2026-09-28 | `SITE_URL` declared as `https://block-the-slop-website.vercel.app` (overridable via `NEXT_PUBLIC_SITE_URL`)                         | One explicit production value per kit; verified live once owner deploys                                                                                                         | WEB-04, WEB-22         |
+| 2026-09-29 | Dark-theme border and focus token moved from `--ink-100` (#f2f2f2, reads as white) to `--gray-400` (#a6a8ad)                        | Owner flagged white borders on dark home; gray-400 keeps ≥3:1 against steel-800/900 card and page surfaces; light theme unchanged                                               | WEB-15                 |
+| 2026-09-29 | Copy simplified site-wide (shorter sentences, everyday words), keeping every verified fact and honesty anchor                       | Owner request; claim guards, config tests ("Default", "false positives", "will pass", "heuristic"), and SEO assertions updated in lockstep; no meaning change vs extension docs | WEB-02, WEB-03, WEB-26 |
+| 2026-09-29 | Wordmark font-size made fluid `clamp(1.35rem, 6vw, 1.75rem)`                                                                        | Real Windows scrollbar (~17px, absent in headless) made 1.75rem wordmark + menu button overflow a 320px window; caught in live browser at 320px                                 | WEB-18                 |
+| 2026-09-29 | h1 clamp minimum lowered 2.625rem → 2.25rem                                                                                         | Unbreakable brand word "BlockTheSlop" in the how-it-works h1 overflowed 320px at 42px; 6vw hits 36px at 600px so ≥600px rendering is unchanged                                  | WEB-18                 |
 
 ## Requirement log
 
@@ -46,17 +50,19 @@ Summary: **29 PASS · 1 NOT_APPLICABLE (WEB-20, no photographic media used) · 5
 
 ## Gate runs
 
-| Date       | Commit     | Command or browser scenario                                                          | Exit/result                                                                     | Artifact or screenshot          |
-| ---------- | ---------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ------------------------------- |
-| 2026-09-28 | pre-commit | `npx tsc --noEmit`                                                                   | 0 errors                                                                        | —                               |
-| 2026-09-28 | pre-commit | `npm run lint` (eslint 9 + next/core-web-vitals + next/typescript)                   | 0 errors, 0 warnings                                                            | —                               |
-| 2026-09-28 | pre-commit | `npm run format:check` (prettier)                                                    | all files clean                                                                 | —                               |
-| 2026-09-28 | pre-commit | `npx vitest run`                                                                     | 24/24 passed                                                                    | —                               |
-| 2026-09-28 | pre-commit | `node scripts/check-no-raw-colors.mjs`                                               | 0 violations, 26 files scanned                                                  | —                               |
-| 2026-09-28 | pre-commit | `npm run build`                                                                      | 14/14 static pages                                                              | —                               |
-| 2026-09-28 | pre-commit | `npx playwright test` (Chromium, production build via `next start`)                  | 63/63 passed                                                                    | evidence/artifacts/visual/*.png |
-| 2026-09-28 | pre-commit | Live browser inspection (Freebuff preview): home, how-it-works, privacy, faq, 404    | DOM/semantic checks passed; no third-party resources; theme/CTA/stripe verified | this log                        |
-| 2026-09-28 | pre-commit | `curl` SEO spot-checks: title, canonical, robots.txt, sitemap.xml, og:image, JSON-LD | all correct on production origin                                                | e2e/seo.spec.ts assertions      |
+| Date       | Commit     | Command or browser scenario                                                           | Exit/result                                                                                                        | Artifact or screenshot          |
+| ---------- | ---------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
+| 2026-09-28 | pre-commit | `npx tsc --noEmit`                                                                    | 0 errors                                                                                                           | —                               |
+| 2026-09-28 | pre-commit | `npm run lint` (eslint 9 + next/core-web-vitals + next/typescript)                    | 0 errors, 0 warnings                                                                                               | —                               |
+| 2026-09-28 | pre-commit | `npm run format:check` (prettier)                                                     | all files clean                                                                                                    | —                               |
+| 2026-09-28 | pre-commit | `npx vitest run`                                                                      | 24/24 passed                                                                                                       | —                               |
+| 2026-09-28 | pre-commit | `node scripts/check-no-raw-colors.mjs`                                                | 0 violations, 26 files scanned                                                                                     | —                               |
+| 2026-09-28 | pre-commit | `npm run build`                                                                       | 14/14 static pages                                                                                                 | —                               |
+| 2026-09-28 | pre-commit | `npx playwright test` (Chromium, production build via `next start`)                   | 63/63 passed                                                                                                       | evidence/artifacts/visual/*.png |
+| 2026-09-28 | pre-commit | Live browser inspection (Freebuff preview): home, how-it-works, privacy, faq, 404     | DOM/semantic checks passed; no third-party resources; theme/CTA/stripe verified                                    | this log                        |
+| 2026-09-28 | pre-commit | `curl` SEO spot-checks: title, canonical, robots.txt, sitemap.xml, og:image, JSON-LD  | all correct on production origin                                                                                   | e2e/seo.spec.ts assertions      |
+| 2026-09-29 | post-pass  | Full gate: format, lint, tsc, vitest, token scan, build, `npx playwright test`        | all green: 24/24 unit, 63/63 E2E, 0 token violations, 14/14 pages                                                  | evidence/artifacts/visual/*.png |
+| 2026-09-29 | post-pass  | Live browser review of all 7 routes + 404 (Freebuff preview, 320–1440px, both themes) | dark borders resolve #a6a8ad; skeleton lines visible; 0px overflow every route; scores 8.5–9.2 (see Visual review) | this log                        |
 
 ## Visual review
 
@@ -71,6 +77,19 @@ Findings fixed during review:
 - `<main>` was duplicated during layout refactor → fixed, single landmark (axe + E2E verify).
 - Skip link was dropped from the layout during refactor → restored; E2E verifies focus lands on `#main` (tabIndex=-1).
 - 200%-zoom test now uses CDP page scale instead of the inaccurate CSS `zoom` simulation.
+
+Findings fixed during the 2026-09-29 pass (owner-flagged screenshot + live review):
+
+- Dark-theme borders read as stark white (`--ink-100`) → moved border token to `--gray-400`; header/footer/cards/CTA now resolve rgb(166,168,173) in dark.
+- `.section` desktop rule overrode `.section--tight` (same specificity, later order), doubling home-page section gaps to ~192px → scoped with `:not(.section--tight)`; tight sections stay 48px.
+- Hero demo-board skeleton lines were invisible in dark (screenshot-frame color equals card surface) → lines/thumbs use `--color-rule` (distinct in every theme).
+- Demo-card "Kept" badges floated mid-card → flex centering keeps them right-aligned and vertically centered.
+- Disabled store CTA looked broken-dull at opacity .55 → raised to .78.
+- Footer had a duplicated `h2` rule → deduplicated.
+- Wordmark + menu button overflowed 320px with a real Windows scrollbar → fluid wordmark clamp (headless tests cannot see this; found live).
+- how-it-works h1 overflowed 320px on the unbreakable brand word → h1 clamp minimum lowered (headless passes, real window failed; found live).
+
+Page-by-page scores after fixes (live review, 2026-09-29): home 8.7 · how-it-works 8.8 · features 8.6 · faq 8.9 · privacy 8.5 · support 9.0 · changelog 8.8 · 404 9.2 — all above the 8/10 bar; weakest page is privacy (density is inherent to a policy document).
 
 Known visual notes (accepted, not defects): hero illustration is intentionally abstract (no fake YouTube capture);
 hazard stripe appears only in header top edge and CTA/demo contexts per specimen usage rules.

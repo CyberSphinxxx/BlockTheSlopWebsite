@@ -52,7 +52,10 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2.625rem, 6vw, 4rem);
+  /* Min lowered from 2.625rem: at 42px the unbreakable word "BlockTheSlop"
+     overflows a 320px window (long word in "How BlockTheSlop filters
+     YouTube"). 6vw reaches 36px at 600px, so desktop is unaffected. */
+  font-size: clamp(2.25rem, 6vw, 4rem);
 }
 
 h2 {
@@ -131,7 +134,10 @@ main:focus-visible {
 }
 
 @media (min-width: 768px) {
-  .section {
+  /* Tight sections stay tight on desktop: the plain `.section` rule inside
+     this query used to override `.section--tight` (same specificity, later
+     source order), doubling home-page whitespace to ~192px between sections. */
+  .section:not(.section--tight) {
     padding-block: var(--sp-9);
   }
 }
@@ -200,12 +206,15 @@ main:focus-visible {
   display: inline-flex;
   align-items: baseline;
   gap: var(--sp-2);
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
+  /* Fluid size: at narrow widths with a classic scrollbar (real Windows
+     browsers, unlike headless tests) 1.75rem + the menu button overflow a
+     320px window. 6vw scales down harmlessly; desktop clamps at 1.75rem. */
+  font-size: clamp(1.35rem, 6vw, 1.75rem);
   font-weight: var(--fw-strong);
   line-height: 1;
   color: var(--color-text);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .wordmark:hover {
@@ -380,7 +389,7 @@ main:focus-visible {
 
 .btn[aria-disabled="true"],
 .btn:disabled {
-  opacity: 0.55;
+  opacity: 0.78;
   cursor: not-allowed;
 }
 
@@ -428,7 +437,7 @@ main:focus-visible {
 
 .hero__title {
   margin: var(--sp-4) 0 var(--sp-4);
-  max-width: 14ch;
+  max-width: 16ch;
 }
 
 .hero__lead {
@@ -688,7 +697,7 @@ main:focus-visible {
   flex: none;
   width: 84px;
   height: 48px;
-  background: var(--color-screenshot-frame);
+  background: var(--color-rule);
   border: 1px solid var(--color-rule);
   border-radius: 2px;
 }
@@ -696,7 +705,9 @@ main:focus-visible {
 .demo-card__line {
   height: 10px;
   border-radius: 2px;
-  background: var(--color-screenshot-frame);
+  /* Screenshot-frame color equals the card surface in dark mode, which made
+     these skeleton lines invisible; --color-rule differs in every theme. */
+  background: var(--color-rule);
 }
 
 .demo-card__line--short {
@@ -853,10 +864,6 @@ main:focus-visible {
   border: 0;
   padding: 0;
   margin-bottom: var(--sp-3);
-}
-
-.site-footer h2 {
-  font-size: var(--text-md);
 }
 
 .site-footer__list {

@@ -34,7 +34,7 @@
   --color-surface-raised: var(--steel-800);
   --color-text: var(--ink-100);
   --color-text-muted: var(--gray-400);
-  --color-border: var(--ink-100);
+  --color-border: var(--gray-400);
   --color-rule: var(--gray-700);
   --color-accent: var(--yellow-500);
   --color-on-accent: var(--ink-900);
@@ -53,7 +53,7 @@
     --color-surface-raised: var(--steel-800);
     --color-text: var(--ink-100);
     --color-text-muted: var(--gray-400);
-    --color-border: var(--ink-100);
+    --color-border: var(--gray-400);
     --color-rule: var(--gray-700);
     --color-accent: var(--yellow-500);
     --color-on-accent: var(--ink-900);

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "BlockTheSlop-Website",
   "status": "code-complete-preview-pending-owner",
-  "lastUpdated": "2026-09-28T19:45:00Z",
+  "lastUpdated": "2026-09-29T10:20:00Z",
   "sourceCommit": "7ccdea7 (BlockTheSlop extension, branch redesign/specimen — facts reviewed, source untouched)",
   "websiteCommit": "99e7590 (local main, not pushed; ledger hash self-reference updated once — see PROGRESS.md)",
   "productionOrigin": "https://block-the-slop-website.vercel.app",
@@ -116,9 +116,9 @@
       "status_date": "2026-09-28"
     },
     "WEB-15": {
-      "check": "Specimen visual DNA: steel/ink/yellow, Barlow Condensed headings, 2px borders, hazard stripe (header + CTA band only); spacious marketing layout",
-      "command": "visual matrix screenshots evidence/artifacts/visual/*.png vs reference/specimen-light.png/dark.png",
-      "status_date": "2026-09-28"
+      "check": "Specimen visual DNA: steel/ink/yellow, Barlow Condensed headings, 2px borders, hazard stripe (header + CTA band only); spacious marketing layout; dark border token is gray-400 (owner flagged white borders); simplified site copy per owner pass",
+      "command": "visual matrix screenshots evidence/artifacts/visual/*.png vs reference/specimen-light.png/dark.png; live border probe resolves rgb(166,168,173)",
+      "status_date": "2026-09-29"
     },
     "WEB-16": {
       "check": "4-layer style system; components reference only semantic tokens",
@@ -131,9 +131,9 @@
       "status_date": "2026-09-28"
     },
     "WEB-18": {
-      "check": "0px horizontal overflow on all routes at 320px; 44px touch targets; full screenshot matrix at 320/375/768/1280/1440 both themes",
-      "command": "npx playwright test e2e/accessibility.spec.ts -g \"reflow\"; visual matrix",
-      "status_date": "2026-09-28"
+      "check": "0px horizontal overflow on all routes at 320px; 44px touch targets; full screenshot matrix at 320/375/768/1280/1440 both themes; reflow re-verified in a real (scrollbar-having) browser after fluid wordmark + h1 clamp fixes",
+      "command": "npx playwright test e2e/accessibility.spec.ts -g \"reflow\"; visual matrix; live 320px sweep all routes",
+      "status_date": "2026-09-29"
     },
     "WEB-19": {
       "check": "axe serious/critical violations = 0 on every route in both themes; skip link + focus management; landmarks/headings verified; reduced-motion forced to 0.01ms",

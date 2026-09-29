@@ -18,7 +18,7 @@ import { SITE } from "../site.config";
 export const PRODUCT = {
   name: SITE.name,
   tagline:
-    "Filter AI-generated and repetitive YouTube videos locally. Every auto-hide is explainable, recoverable, and yours to undo.",
+    "Hide AI-made and repetitive YouTube videos on your device. Every auto-hide is explainable, undoable, and yours to control.",
   /** Extension version documented by this site. */
   version: SITE.extensionVersion,
   versionDate: SITE.extensionReleaseDate,
@@ -86,10 +86,10 @@ export const PRODUCT = {
 
   /** Honest limitation statements, required by the truthful-product contract. */
   limitations: [
-    'BlockTheSlop reads visible YouTube metadata — titles, descriptions, channel names and IDs, badge text (including YouTube\'s own "Altered or synthetic content" disclosure), and aria labels. It does not watch video frames or listen to audio.',
-    "Undisclosed AI content with no observable signal will pass the filter. No metadata-only tool can catch every AI-made video.",
-    "Heuristics make mistakes. A video you wanted can be hidden — that is why every automatic hide is one click to restore.",
-    "A score is a heuristic signal weight, not a probability or proof of authorship.",
+    'BlockTheSlop reads what is visible on a YouTube page — titles, descriptions, channel names and IDs, badge text (including YouTube\'s own "Altered or synthetic content" disclosure), and aria labels. It never watches video frames or listens to audio.',
+    "An AI video with no visible clue will pass the filter. No tool that only reads page text can catch every AI video.",
+    "Heuristics make mistakes. A video you wanted can be hidden — that is why every automatic hide is one click to bring back.",
+    "A score is a heuristic signal weight, not a probability or proof of who made the video.",
     "Unknown or redesigned YouTube layouts fail open: cards stay visible rather than mis-filtered.",
     "The extension works on youtube.com in desktop browsers. It does not filter the YouTube mobile app, smart TVs, or other sites.",
   ],
@@ -105,17 +105,17 @@ export const FEATURE_GROUPS = [
     features: [
       {
         title: "Four filtering modes",
-        body: "Safe, Balanced (default), Strict, and Aggressive. Aggressive is an explicit tradeoff: it hides more but accepts more false positives — and every hide is one click to undo.",
+        body: "Safe, Balanced (default), Strict, and Aggressive. Aggressive hides more but also makes more mistakes — and every hide is one click to undo.",
         optional: false,
       },
       {
         title: "Per-category actions",
-        body: "Decide Hide, Warn, or Allow for each category: AI-generated video, AI voice, AI music, AI thumbnail, and content farms.",
+        body: "Choose Hide, Warn, or Allow for each category: AI video, AI voice, AI music, AI thumbnails, and content farms.",
         optional: false,
       },
       {
         title: "Per-surface toggles",
-        body: "Filter on home, search, subscriptions, watch sidebar, Shorts shelf, and more — each surface can be switched on or off independently.",
+        body: "Turn filtering on or off for each YouTube page: home, search, subscriptions, the watch sidebar, Shorts, and more.",
         optional: false,
       },
       {
@@ -125,12 +125,12 @@ export const FEATURE_GROUPS = [
       },
       {
         title: "Per-video and per-channel rules",
-        body: "Right-click any card to hide a single video or block an entire channel, with instant Undo and conflict detection. Channel blocks require a verified canonical channel ID.",
+        body: "Right-click any card to hide one video or block a whole channel, with instant Undo and conflict checks. Channel blocks need a verified channel ID.",
         optional: false,
       },
       {
         title: "Automatic channel blocking",
-        body: "Strictly opt-in and default OFF. When enabled it requires a canonical channel ID and at least three qualifying videos across visits, is capped at five promotions per day, expires after 30 days, and is instantly revocable.",
+        body: "Off by default. When you turn it on, it needs a canonical channel ID and three or more matching videos across visits, allows at most five per day, expires after 30 days, and you can turn it off at any time.",
         optional: true,
       },
     ],
@@ -141,12 +141,12 @@ export const FEATURE_GROUPS = [
     features: [
       {
         title: "One-click recovery",
-        body: "Hidden cards collapse with no blank gap. Restore one, restore all, or reveal once — a restored card stays visible.",
+        body: "Hidden cards collapse with no empty gap. Bring back one, bring back all, or show a card once — a restored card stays visible.",
         optional: false,
       },
       {
         title: "Durable review history",
-        body: "A paginated history of everything hidden or warned, with restore, bulk delete, and filters. Each record shows the reason it was hidden.",
+        body: "A paged list of everything hidden or warned, with restore, bulk delete, and filters. Each record shows why the video was hidden.",
         optional: false,
       },
       {
@@ -156,7 +156,7 @@ export const FEATURE_GROUPS = [
       },
       {
         title: "Session recovery",
-        body: "Even with history disabled, a corner notice and the popup's Session list recover every card hidden in the current page view.",
+        body: "Even with history off, a corner notice and the popup Session list bring back every card hidden on the current page view.",
         optional: false,
       },
     ],
@@ -172,22 +172,22 @@ export const FEATURE_GROUPS = [
       },
       {
         title: "Local statistics",
-        body: "Optional, on-device counters of what the extension hid and restored. Never sent anywhere.",
+        body: "Optional counters, stored on your device, of what the extension hid and brought back. Never sent anywhere.",
         optional: true,
       },
       {
         title: "Configurable retention",
-        body: "History is age- and size-bounded, with separate controls to clear history, corrections, cache, and statistics.",
+        body: "History is limited by age and size, with separate controls to clear history, corrections, cache, and statistics.",
         optional: false,
       },
       {
         title: "Import and export",
-        body: "Export settings, rules, history, and statistics as JSON. Imports are validated strictly and previewed before anything is applied.",
+        body: "Save your settings, rules, history, and statistics as a JSON file. Imports are checked carefully and shown to you before anything is applied.",
         optional: false,
       },
       {
         title: "Honest about what is not wired",
-        body: 'The remote-reputation provider and "also tell YouTube Not interested" toggles exist in Settings but are disabled and marked not available in this build.',
+        body: 'Two toggles — a remote reputation source and "also tell YouTube Not interested" — sit in Settings but are switched off and marked not available in this build.',
         optional: false,
       },
     ],

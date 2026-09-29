@@ -45,7 +45,7 @@ export function StoreCta({ note }: Props) {
         Coming to Chrome Web Store
       </span>
       <span className="btn__note">
-        Not yet published. Meanwhile: <a href="/how-it-works">see how it works</a> or{" "}
+        Not out yet. For now: <a href="/how-it-works">see how it works</a> or{" "}
         <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
           view the source
           <span className="visually-hidden"> (opens in a new tab)</span>

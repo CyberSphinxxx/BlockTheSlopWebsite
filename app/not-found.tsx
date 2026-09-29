@@ -18,7 +18,7 @@ export default function NotFound() {
         </p>
         <h1 id="notfound-heading">Page not found</h1>
         <p style={{ maxWidth: "46ch", margin: "var(--sp-4) auto var(--sp-5)" }}>
-          The page you tried to reach does not exist here. Nothing was filtered — it was never
+          The page you tried to reach does not exist here. Nothing was hidden — the page was never
           built, moved, or typed correctly. Try one of these instead:
         </p>
         <div className="hero__ctas" style={{ justifyContent: "center" }}>

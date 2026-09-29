@@ -15,7 +15,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/",
     title: "BlockTheSlop — Filter unwanted AI-made YouTube videos",
     description:
-      "BlockTheSlop is a local-first browser extension that hides AI-generated, automated, and repetitive YouTube videos on your terms — with every automatic hide recoverable in one click.",
+      "A browser extension that hides AI-made and repetitive YouTube videos on your device. Every automatic hide can be undone in one click.",
     navLabel: "Home",
     priority: 1,
   },
@@ -23,7 +23,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/how-it-works",
     title: "How BlockTheSlop filters YouTube",
     description:
-      "What BlockTheSlop reads on YouTube, how heuristic filtering works, how you choose what disappears, and how to restore any video in one click.",
+      "What the extension reads on a YouTube page, how the filtering rules work, and how to bring back any video in one click.",
     navLabel: "How it works",
     priority: 0.8,
   },
@@ -31,7 +31,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/features",
     title: "Features",
     description:
-      "Modes, category and surface controls, channel and video rules, review history with corrections, local statistics, import/export — every shipped BlockTheSlop feature.",
+      "Filter modes, category and page controls, channel and video rules, a review history, and local stats — every feature that ships in the extension.",
     navLabel: "Features",
     priority: 0.8,
   },
@@ -39,7 +39,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/faq",
     title: "FAQ",
     description:
-      "Answers about installing BlockTheSlop, why some AI videos pass, false positives and recovery, channel blocking, data handling, and browser support.",
+      "Short answers about installing the extension, why some AI videos get through, undoing wrong hides, channel blocking, and your data.",
     navLabel: "FAQ",
     priority: 0.7,
   },
@@ -47,7 +47,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/privacy",
     title: "Privacy Policy",
     description:
-      "What the BlockTheSlop extension reads and stores on your device, what never leaves it, and how this website itself is hosted.",
+      "What the extension reads and saves on your device, what never leaves it, and how this website is hosted.",
     navLabel: "Privacy",
     priority: 0.7,
   },
@@ -55,7 +55,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/support",
     title: "Support",
     description:
-      "Get help with BlockTheSlop: report a bug, ask a question, or read troubleshooting guidance via the project issue tracker.",
+      "How to get help: report a bug or ask a question on the project issue tracker, and what to include in a good report.",
     navLabel: "Support",
     priority: 0.6,
   },
@@ -63,7 +63,7 @@ export const ROUTES: readonly RouteDefinition[] = [
     path: "/changelog",
     title: "Changelog",
     description:
-      "Release history for BlockTheSlop: verified versions, dates, and what changed in each release.",
+      "The release list for BlockTheSlop: each shipped version, its date, and what changed.",
     priority: 0.4,
   },
 ] as const;

@@ -6,7 +6,7 @@ import { SITE } from "../../site.config";
 export const metadata = {
   title: "Changelog",
   description:
-    "Release history for BlockTheSlop: verified versions, dates, and what changed in each release.",
+    "The release list for BlockTheSlop: each shipped version, its date, and what changed.",
   alternates: { canonical: "/changelog" },
 };
 
@@ -22,13 +22,13 @@ const RELEASES = [
     date: PRODUCT.versionDate,
     title: "First store release candidate",
     notes: [
-      "Category- and surface-based filtering with Safe, Balanced, Strict, and Aggressive modes (default: Balanced).",
-      "Per-video and per-channel allow/block with conflict detection, plus literal phrase rules.",
+      "Filtering by category and page, with Safe, Balanced, Strict, and Aggressive modes (default: Balanced).",
+      "Allow/block rules for single videos and whole channels, plus word and phrase rules.",
       'Review history with restore, "Not AI" / "Not slop" corrections, bulk delete, and filters; corrections survive history clears.',
-      "Session recovery via the on-page corner notice and popup, working even when history is disabled.",
-      "Context-menu blocking with instant Undo; optional automatic channel blocking (default OFF) with strict safeguards.",
-      "Import/export with strict validation and preview; local-only statistics.",
-      "Firefox build ships from the same source (MV2 manifest).",
+      "Session recovery through the corner notice and popup, even when history is off.",
+      "Right-click hiding with instant Undo; optional automatic channel blocking (off by default) with strict safeguards.",
+      "Save and load settings as a file, with checks and a preview; local-only statistics.",
+      "A Firefox build ships from the same source.",
     ],
   },
 ] as const;
@@ -40,7 +40,7 @@ export default function ChangelogPage() {
         <h1>Changelog</h1>
         <p>
           Verified releases only — versions and dates come from the project&apos;s release records,
-          and the list grows when the extension ships.
+          and the list grows as the extension ships.
         </p>
       </header>
 

@@ -13,8 +13,8 @@ export function SiteFooter() {
             BlockThe<em>Slop</em>
           </p>
           <p style={{ maxWidth: "34ch", color: "var(--color-text-muted)" }}>
-            A local-first browser extension that filters AI-generated, automated, and repetitive
-            YouTube videos — on your terms.
+            A browser extension that hides AI-made and repetitive YouTube videos — on your terms, on
+            your device.
           </p>
         </div>
         <nav aria-label="Pages">

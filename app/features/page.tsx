@@ -5,7 +5,7 @@ import { FEATURE_GROUPS, PRODUCT } from "../../content/site";
 export const metadata = {
   title: "Features",
   description:
-    "Modes, category and surface controls, channel and video rules, review history with corrections, local statistics, import/export — every shipped BlockTheSlop feature.",
+    "Filter modes, category and page controls, channel and video rules, a review history, and local stats — every feature that ships in the extension.",
   alternates: { canonical: "/features" },
 };
 
@@ -15,8 +15,8 @@ export default function FeaturesPage() {
       <header className="page-header">
         <h1>Choose what disappears and what stays</h1>
         <p>
-          Every feature below ships in BlockTheSlop v{PRODUCT.version}. Optional or default-off
-          behavior is labeled as such — nothing here is aspirational.
+          Every feature below ships in BlockTheSlop v{PRODUCT.version}. Anything optional or off by
+          default is labeled — nothing here is a promise of a future feature.
         </p>
       </header>
 
@@ -47,11 +47,10 @@ export default function FeaturesPage() {
         ))}
 
         <section aria-labelledby="surfaces-heading" style={{ marginTop: "var(--sp-7)" }}>
-          <h2 id="surfaces-heading">Supported YouTube surfaces</h2>
+          <h2 id="surfaces-heading">Supported YouTube pages</h2>
           <p style={{ maxWidth: "60ch" }}>
-            Filtering applies to the surfaces you enable, across the youtube.com pages listed below.
-            Unknown or redesigned layouts fail open — cards stay visible rather than being wrongly
-            filtered.
+            Filtering runs on the pages you turn on, from the youtube.com list below. Unknown or
+            redesigned layouts fail open — cards stay visible rather than being wrongly filtered.
           </p>
           <ul className="hero__proof" style={{ columns: 2, columnGap: "var(--sp-6)" }}>
             {PRODUCT.surfaces.map((surface) => (
