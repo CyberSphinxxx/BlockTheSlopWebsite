@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { FeatureRow } from "../../components/FeatureRow";
+import { PageIntro } from "../../components/PageIntro";
 import { FEATURE_GROUPS, PRODUCT } from "../../content/site";
 
 export const metadata = {
@@ -11,69 +13,79 @@ export const metadata = {
 
 export default function FeaturesPage() {
   return (
-    <div className="container">
-      <header className="page-header">
-        <h1>Choose what disappears and what stays</h1>
-        <p>
-          Every feature below ships in BlockTheSlop v{PRODUCT.version}. Anything optional or off by
-          default is labeled — nothing here is a promise of a future feature.
-        </p>
-      </header>
+    <div className="container page-body stack">
+      <PageIntro
+        title="Choose what disappears and what stays"
+        lead={
+          <>
+            Every feature below ships in BlockTheSlop v{PRODUCT.version}. Anything optional or off
+            by default is labeled — nothing here is a promise of a future feature.
+          </>
+        }
+      />
 
-      <div className="section--tight" style={{ paddingBottom: "var(--sp-8)" }}>
-        {FEATURE_GROUPS.map((group) => (
-          <section
-            key={group.id}
-            aria-labelledby={`group-${group.id}`}
-            style={{ marginTop: "var(--sp-7)" }}
-          >
-            <h2 id={`group-${group.id}`}>{group.title}</h2>
-            <div className="card-grid card-grid--2" style={{ marginTop: "var(--sp-5)" }}>
-              {group.features.map((feature) => (
-                <article key={feature.title} className="card">
-                  <h3>{feature.title}</h3>
-                  <p className="card__body">{feature.body}</p>
-                  <span className="card__meta">
-                    {feature.optional ? (
-                      <span className="badge badge--off">Optional / default off</span>
-                    ) : (
-                      <span className="badge">Shipped</span>
-                    )}
-                  </span>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-
-        <section aria-labelledby="surfaces-heading" style={{ marginTop: "var(--sp-7)" }}>
-          <h2 id="surfaces-heading">Supported YouTube pages</h2>
-          <p style={{ maxWidth: "60ch" }}>
-            Filtering runs on the pages you turn on, from the youtube.com list below. Unknown or
-            redesigned layouts fail open — cards stay visible rather than being wrongly filtered.
+      {FEATURE_GROUPS.map((group) => (
+        <section key={group.id} className="feature-group" aria-labelledby={`group-${group.id}`}>
+          <h2 id={`group-${group.id}`}>{group.title}</h2>
+          <p className="feature-group__intro">
+            Included in the documented release. Only rows marked optional ship switched off.
           </p>
-          <ul className="hero__proof" style={{ columns: 2, columnGap: "var(--sp-6)" }}>
-            {PRODUCT.surfaces.map((surface) => (
-              <li key={surface}>✔ {surface}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section aria-labelledby="modes-heading" style={{ marginTop: "var(--sp-7)" }}>
-          <h2 id="modes-heading">The four modes</h2>
-          <div className="card-grid card-grid--2" style={{ marginTop: "var(--sp-5)" }}>
-            {PRODUCT.modes.map((mode) => (
-              <article key={mode.name} className="card">
-                <h3>{mode.name}</h3>
-                <p className="card__body">{mode.detail}</p>
-              </article>
+          <div className="feature-rows">
+            {group.features.map((feature) => (
+              <FeatureRow
+                key={feature.title}
+                title={feature.title}
+                body={feature.body}
+                state={
+                  feature.optional ? (
+                    <span className="state-badge">Optional · off by default</span>
+                  ) : undefined
+                }
+              />
             ))}
           </div>
-          <p style={{ marginTop: "var(--sp-5)" }}>
-            <Link href="/how-it-works">How the modes and signals interact →</Link>
-          </p>
         </section>
-      </div>
+      ))}
+
+      <section aria-labelledby="modes-heading">
+        <h2 id="modes-heading">The four modes</h2>
+        <p className="feature-group__intro">
+          The mode sets how much proof is needed before the extension acts. Balanced is the default.
+        </p>
+        <div className="compare">
+          <div className="compare__head" aria-hidden="true">
+            <span>Mode</span>
+            <span>What it does</span>
+          </div>
+          <ul className="compare__rows">
+            {PRODUCT.modes.map((mode) => (
+              <li key={mode.name} className="compare__row">
+                <p className="compare__mode">
+                  {mode.name}
+                  {mode.name === "Balanced" ? <span className="state-badge">Default</span> : null}
+                </p>
+                <p className="compare__detail">{mode.detail}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p className="release-note">
+          <Link href="/how-it-works">How the modes and signals interact →</Link>
+        </p>
+      </section>
+
+      <section aria-labelledby="surfaces-heading">
+        <h2 id="surfaces-heading">Supported YouTube pages</h2>
+        <p className="feature-group__intro">
+          Filtering runs on the pages you turn on, from the youtube.com list below. Unknown or
+          redesigned layouts fail open — cards stay visible rather than being wrongly filtered.
+        </p>
+        <ul className="surface-grid">
+          {PRODUCT.surfaces.map((surface) => (
+            <li key={surface}>{surface}</li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }
