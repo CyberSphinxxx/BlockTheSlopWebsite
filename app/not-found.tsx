@@ -7,29 +7,23 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <div className="container">
-      <section
-        className="section"
-        style={{ textAlign: "center", justifyItems: "center" }}
-        aria-labelledby="notfound-heading"
-      >
-        <p className="hero__kicker" style={{ justifyContent: "center" }} aria-hidden="true">
-          Error 404
-        </p>
-        <h1 id="notfound-heading">Page not found</h1>
-        <p style={{ maxWidth: "46ch", margin: "var(--sp-4) auto var(--sp-5)" }}>
+    <div className="container page-body">
+      <header className="page-intro">
+        <p className="eyebrow">Error 404</p>
+        <h1>Page not found</h1>
+        <p className="page-intro__lead">
           The page you tried to reach does not exist here. Nothing was hidden — the page was never
-          built, moved, or typed correctly. Try one of these instead:
+          built, moved, or typed correctly.
         </p>
-        <div className="hero__ctas" style={{ justifyContent: "center" }}>
-          <Link className="btn btn--primary" href="/">
-            Go to the home page
-          </Link>
-          <Link className="btn" href="/faq">
-            Read the FAQ
-          </Link>
-        </div>
-      </section>
+      </header>
+      <div className="action-row intro-actions">
+        <Link className="btn btn--primary" href="/">
+          Go to the home page
+        </Link>
+        <Link className="btn" href="/support">
+          Get support
+        </Link>
+      </div>
     </div>
   );
 }
