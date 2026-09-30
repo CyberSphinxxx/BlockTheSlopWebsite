@@ -35,8 +35,8 @@ test("theme switch: light and dark apply immediately and persist across reload",
   await themeSwitch.getByRole("button", { name: "Dark" }).first().click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   const darkBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  // steel-900 = #17181b
-  expect(darkBg).toBe("rgb(23, 24, 27)");
+  // Overhaul canvas role: charcoal-950 = #141618
+  expect(darkBg).toBe("rgb(20, 22, 24)");
 
   // Persisted choice survives reload.
   await page.reload();
@@ -44,8 +44,8 @@ test("theme switch: light and dark apply immediately and persist across reload",
 
   await themeSwitch.getByRole("button", { name: "Light" }).first().click();
   const lightBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  // steel-100 = #eceeef
-  expect(lightBg).toBe("rgb(236, 238, 239)");
+  // Overhaul canvas role: snow-50 = #f7f8fa
+  expect(lightBg).toBe("rgb(247, 248, 250)");
 
   await themeSwitch.getByRole("button", { name: "System" }).first().click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "system");
@@ -78,11 +78,11 @@ test("system theme follows prefers-color-scheme without a stored preference", as
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
   const darkBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  expect(darkBg).toBe("rgb(23, 24, 27)");
+  expect(darkBg).toBe("rgb(20, 22, 24)");
 
   await page.emulateMedia({ colorScheme: "light" });
   const lightBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  expect(lightBg).toBe("rgb(236, 238, 239)");
+  expect(lightBg).toBe("rgb(247, 248, 250)");
 });
 
 test("mobile navigation opens, closes, and navigates", async ({ page }) => {
