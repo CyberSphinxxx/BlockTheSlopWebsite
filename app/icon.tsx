@@ -12,16 +12,19 @@ export default function Icon() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#17181b",
-        color: "#f2f2f2",
+        // Raw hex is required here: generated images render outside the CSS
+        // token layers. Values match the overhaul palette (charcoal-950,
+        // paper-50, yellow-400, ink-900) so brand assets match the site.
+        background: "#141618",
+        color: "#f5f6f7",
         fontSize: 40,
         fontWeight: 700,
       }}
     >
       <span
         style={{
-          background: "#ffc400",
-          color: "#17181b",
+          background: "#ffd21a",
+          color: "#151719",
           padding: "0 8px",
         }}
       >
