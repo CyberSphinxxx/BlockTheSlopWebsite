@@ -2,7 +2,12 @@
 
 ## Current state
 
-- Date/time: 2026-09-29 (copy-simplification + visual polish pass)
+- 2026-09-29 **design overhaul supersedes the specimen visual DNA below**: the site now uses a
+  charcoal/warm-white/yellow system with a system UI font stack, semantic type roles and quiet rules
+  instead of Barlow Condensed headings, 2px borders and the hazard stripe. Current state, gates and
+  evidence live in `design-overhaul/PROGRESS.md`; product facts, privacy copy, routes, metadata and
+  behaviour are unchanged by the overhaul. The older entries below remain useful as product-fact sources.
+- Date/time: 2026-09-29 (copy-simplification + visual polish pass; later superseded by the overhaul above)
 - Website commit: `ac8a62d` initial release + ledger hash bookkeeping commits; 2026-09-29 pass simplifies copy site-wide, swaps the dark-theme border from near-white to gray, and fixes three real-browser layout bugs (see Decision log and Visual review); local `main`, not pushed (owner action). Note: `state.json.websiteCommit` intentionally records the initial-release hash `ac8a62d` (the code state all evidence refers to); the two follow-up commits touch only ledger bookkeeping.
 - Extension source commit reviewed: `7ccdea7` (branch `redesign/specimen`) — **read-only**; extension files, build, and release artifacts untouched
 - Current phase and next requirement: code-complete; all executable requirements PASS; remaining items are owner actions
