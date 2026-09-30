@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageIntro } from "../../components/PageIntro";
 import { PRODUCT } from "../../content/site";
 import { SITE } from "../../site.config";
 
@@ -119,39 +120,38 @@ const FAQS = [
 
 export default function FaqPage() {
   return (
-    <div className="container">
-      <header className="page-header">
-        <h1>Questions about BlockTheSlop</h1>
-        <p>
-          Short answers first, links where they help. If your question is not here,{" "}
-          <Link href="/support">ask on the issue tracker</Link>.
-        </p>
-      </header>
+    <div className="container page-body stack stack--block faq-page">
+      <PageIntro
+        title="Questions about BlockTheSlop"
+        lead={
+          <>
+            Short answers first, links where they help. If your question is not here,{" "}
+            <Link href="/support">ask on the issue tracker</Link>.
+          </>
+        }
+      />
 
-      <div
-        className="section--tight faq-list"
-        style={{ paddingBottom: "var(--sp-8)", maxWidth: "56rem" }}
-      >
+      <div className="faq-list">
         {FAQS.map((item) => (
           <details key={item.q} className="faq-item">
-            <summary>{item.q}</summary>
+            {/* The question text is its own element so the hover underline
+                stays on the text and never crosses the +/− marker. */}
+            <summary>
+              <span>{item.q}</span>
+            </summary>
             <div className="faq-item__body">{item.a}</div>
           </details>
         ))}
       </div>
 
-      <div className="section--tight" style={{ paddingBottom: "var(--sp-8)" }}>
-        {" "}
-        <div className="panel">
-          <p style={{ margin: 0, color: "var(--color-text-muted)" }}>
-            Current documented release: v{PRODUCT.version} ({PRODUCT.versionDate}). Source:{" "}
-            <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
-              the project repository
-            </a>
-            .
-          </p>
-        </div>
-      </div>
+      <p className="release-note">
+        Current documented release: v{PRODUCT.version} ({PRODUCT.versionDate}). Source:{" "}
+        <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
+          the project repository
+          <span className="visually-hidden"> (opens in a new tab)</span>
+        </a>
+        .
+      </p>
     </div>
   );
 }
