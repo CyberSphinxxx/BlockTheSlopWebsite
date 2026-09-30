@@ -1,57 +1,63 @@
+import Link from "next/link";
+
 import { SITE } from "../site.config";
 
 type Props = {
-  /** Visual size: hero uses larger type via .btn styles anyway; kept for semantics. */
-  size?: "regular" | "hero";
-  /** Extra note under the button (e.g. version/date). */
+  /** Helper text for the published-store branch (e.g. version/date context). */
   note?: string;
 };
 
 /**
- * The primary install CTA.
+ * The primary call to action before the Chrome Web Store listing exists.
  *
- * Before the Chrome Web Store listing is published, SITE.storeUrl is null and
- * this renders a non-interactive, honest "coming" state — never a guessed URL
- * or a link to a development ZIP. When a verified store URL is configured the
- * same component becomes the real outbound link. Browser tests cover both.
+ * SITE.storeUrl is null until a real listing is published and verified, so the
+ * strongest available action is the explanation page. The "coming" status is a
+ * plain paragraph below the action row — never a disabled control, never a
+ * guessed URL, and never inside the row where it would stretch a sibling's
+ * height (audit UI-01 / UI-07). Once a verified store URL is configured the
+ * same component promotes the real install link and keeps the explanation
+ * secondary.
  */
 export function StoreCta({ note }: Props) {
-  if (SITE.storeUrl) {
-    return (
-      <div>
-        <a
-          className="btn btn--primary"
-          href={SITE.storeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Install BlockTheSlop from the Chrome Web Store (opens in a new tab)"
-        >
-          Install from Chrome Web Store
-          <span className="visually-hidden"> (opens in a new tab)</span>
-        </a>
-        {note ? <span className="btn__note">{note}</span> : null}
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <span
-        className="btn btn--primary"
-        aria-disabled="true"
-        role="button"
-        aria-label="BlockTheSlop is coming to the Chrome Web Store; installation is not available yet"
-      >
-        Coming to Chrome Web Store
-      </span>
-      <span className="btn__note">
-        Not out yet. For now: <a href="/how-it-works">see how it works</a> or{" "}
-        <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
-          view the source
-          <span className="visually-hidden"> (opens in a new tab)</span>
-        </a>
-        .
-      </span>
+    <div className="cta-block">
+      <div className="action-row">
+        {SITE.storeUrl ? (
+          <>
+            <a
+              className="btn btn--primary"
+              href={SITE.storeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Install BlockTheSlop from the Chrome Web Store (opens in a new tab)"
+            >
+              Install from Chrome Web Store
+            </a>
+            <Link className="btn" href="/how-it-works">
+              See how it works
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link className="btn btn--primary" href="/how-it-works">
+              See how it works
+            </Link>
+            <a className="btn" href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
+              View source
+              <span className="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          </>
+        )}
+      </div>
+      {SITE.storeUrl ? (
+        note ? (
+          <p className="cta-status">{note}</p>
+        ) : null
+      ) : (
+        <p className="cta-status">
+          Coming to Chrome Web Store · installation is not available yet.
+        </p>
+      )}
     </div>
   );
 }
