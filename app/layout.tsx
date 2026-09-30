@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
 
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
@@ -7,40 +6,6 @@ import { THEME_INIT_SCRIPT } from "../components/theme-script";
 import { OG_TITLE, OG_DESCRIPTION } from "../content/og";
 import { SITE } from "../site.config";
 import "./globals.css";
-
-const barlowCondensed = localFont({
-  src: [
-    {
-      path: "../public/fonts/barlow-condensed-500.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/barlow-condensed-700.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  display: "swap",
-  variable: "--font-barlow-condensed",
-});
-
-const barlowSemiCondensed = localFont({
-  src: [
-    {
-      path: "../public/fonts/barlow-semi-condensed-400.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/barlow-semi-condensed-600.woff2",
-      weight: "600",
-      style: "normal",
-    },
-  ],
-  display: "swap",
-  variable: "--font-barlow-semi",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -94,7 +59,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
-      <body className={`${barlowCondensed.variable} ${barlowSemiCondensed.variable}`}>
+      {/*
+        Typography comes from the system UI stack (styles/tokens.css). No font
+        is downloaded, so there is no fallback swap and no third-party font
+        request to audit.
+      */}
+      <body>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
