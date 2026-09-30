@@ -32,7 +32,7 @@ export function SiteHeader() {
 
   // Close the panel when the viewport grows into desktop navigation.
   useEffect(() => {
-    const media = window.matchMedia("(min-width: 820px)");
+    const media = window.matchMedia("(min-width: 960px)");
     const onChange = () => {
       if (media.matches) setOpen(false);
     };
@@ -40,7 +40,7 @@ export function SiteHeader() {
     return () => media.removeEventListener("change", onChange);
   }, []);
 
-  // Focus trap while the mobile panel is open (applies only while visible).
+  // Keep Tab inside the panel while it is open (the closed panel is hidden).
   useEffect(() => {
     if (!open) return;
     const panel = panelRef.current;
@@ -67,21 +67,22 @@ export function SiteHeader() {
 
   return (
     <header className="site-header" onKeyDown={onKeyDown}>
-      <div className="stripe stripe--sm" aria-hidden="true" />
       <div className="container site-header__inner">
         <Link href="/" className="wordmark" aria-label="BlockTheSlop home">
           BlockThe<em>Slop</em>
         </Link>
+        {/* next/link gives each route a real anchor plus client-side
+            navigation and prefetch; every item points at its own page. */}
         <nav aria-label="Main" className="site-nav">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="site-nav__link"
               aria-current={item.current ? "page" : undefined}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="site-header__actions">
@@ -107,14 +108,14 @@ export function SiteHeader() {
         <ul className="mobile-nav__list">
           {navItems.map((item) => (
             <li key={item.href}>
-              <a
+              <Link
                 href={item.href}
                 className="mobile-nav__link"
                 aria-current={item.current ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li>
