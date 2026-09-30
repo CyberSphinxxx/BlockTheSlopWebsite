@@ -1,18 +1,22 @@
+import Link from "next/link";
+
 import { ROUTES } from "../content/routes";
 import { PRODUCT } from "../content/site";
 import { SITE } from "../site.config";
 import { ThemeSwitch } from "./ThemeSwitch";
 
 export function SiteFooter() {
+  // Every public route is listed here, including changelog (which is not in
+  // the primary navigation).
   const pages = ROUTES.filter((route) => route.navLabel || route.path === "/changelog");
   return (
     <footer className="site-footer">
       <div className="container site-footer__grid">
-        <div>
-          <p className="wordmark" style={{ marginBottom: "var(--sp-3)" }}>
+        <div className="site-footer__brand">
+          <p className="wordmark">
             BlockThe<em>Slop</em>
           </p>
-          <p style={{ maxWidth: "34ch", color: "var(--color-text-muted)" }}>
+          <p className="site-footer__tagline">
             A browser extension that hides AI-made and repetitive YouTube videos — on your terms, on
             your device.
           </p>
@@ -22,7 +26,7 @@ export function SiteFooter() {
           <ul className="site-footer__list">
             {pages.map((route) => (
               <li key={route.path}>
-                <a href={route.path === "/" ? "/" : route.path}>{route.navLabel ?? "Changelog"}</a>
+                <Link href={route.path}>{route.navLabel ?? "Changelog"}</Link>
               </li>
             ))}
           </ul>
@@ -45,12 +49,9 @@ export function SiteFooter() {
             </li>
           </ul>
         </nav>
-        <div>
+        <div className="site-footer__theme">
           <h2>Theme</h2>
           <ThemeSwitch />
-          <p style={{ fontSize: "var(--text-xs)", color: "var(--color-text-muted)" }}>
-            Saved on this device only.
-          </p>
         </div>
       </div>
       <div className="container site-footer__legal">
