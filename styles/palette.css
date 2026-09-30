@@ -2,24 +2,42 @@
  * LAYER 1 — Raw palette. Immutable color primitives.
  * Only theme definitions may reference these custom properties or raw hex.
  * Components must use semantic --color-* tokens (layer 2) only.
+ *
+ * Direction: charcoal canvas, warm white text, one restrained yellow accent.
+ * Values come from design-overhaul/02-DESIGN-SYSTEM.md and are measured in
+ * the review loop (contrast + overflow), not assumed.
  */
 :root {
-  --steel-100: #eceeef;
-  --steel-200: #dfe2e4;
-  --steel-800: #212226;
-  --steel-900: #17181b;
+  /* Charcoal scale: canvas → surface → elevated/hover */
+  --charcoal-950: #141618;
+  --charcoal-900: #1d2024;
+  --charcoal-800: #262b31;
+  /* Decorative rules on charcoal */
+  --charcoal-600: #353b43;
+
+  /* Warm white/neutral text and rules on light */
+  --paper-50: #f5f6f7;
+  --snow-50: #f7f8fa;
+  --snow-100: #eef0f3;
   --white: #ffffff;
-  --ink-900: #111111;
-  --ink-100: #f2f2f2;
-  --gray-600: #555555;
-  --gray-500: #6b6d73;
-  --gray-400: #a6a8ad;
-  --gray-300: #c9cccf;
-  --gray-700: #3a3b40;
-  --yellow-500: #ffc400;
-  --yellow-400: #ffd633;
-  --red-600: #c62828;
-  --red-300: #ff8a80;
-  --green-700: #1b7f3b;
-  --green-300: #6fdc8c;
+  --ink-950: #171a1e;
+  --ink-900: #151719;
+
+  /* Muted secondary text */
+  --mist-300: #abb2bc;
+  --slate-700: #555f6d;
+
+  /* Decorative rules on light */
+  --mist-200: #d9dee5;
+
+  /* Interactive control boundaries (need 3:1 against their surfaces) */
+  --slate-400: #7f8997;
+  --slate-500: #657080;
+
+  /* Single accent, plus one darker hover step */
+  --yellow-400: #ffd21a;
+  --yellow-600: #e0b800;
+
+  /* Focus ring on the light canvas (yellow fails contrast there) */
+  --blue-800: #1b4b91;
 }
