@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageIntro } from "../../components/PageIntro";
 import { PRODUCT } from "../../content/site";
 import { SITE } from "../../site.config";
 
@@ -35,53 +36,39 @@ const RELEASES = [
 
 export default function ChangelogPage() {
   return (
-    <div className="container">
-      <header className="page-header">
-        <h1>Changelog</h1>
-        <p>
-          Verified releases only — versions and dates come from the project&apos;s release records,
-          and the list grows as the extension ships.
-        </p>
-      </header>
+    <div className="container page-body stack stack--block">
+      <PageIntro
+        title="Changelog"
+        lead="Verified releases only — versions and dates come from the project's release records, and the list grows as the extension ships."
+      />
 
-      <div className="section--tight" style={{ paddingBottom: "var(--sp-8)", maxWidth: "52rem" }}>
+      <div>
         {RELEASES.map((release) => (
-          <article key={release.version} className="card" style={{ marginBottom: "var(--sp-5)" }}>
-            <h2 style={{ fontSize: "var(--text-xl)" }}>
-              v{release.version}{" "}
-              <span
-                style={{
-                  fontSize: "var(--text-sm)",
-                  color: "var(--color-text-muted)",
-                  fontFamily: "var(--font-body)",
-                  fontWeight: "var(--fw-body)",
-                }}
-              >
-                · {release.date}
-              </span>
-            </h2>
-            <p className="card__body" style={{ fontWeight: 600 }}>
-              {release.title}
+          <article key={release.version} className="release">
+            <p className="release__meta">
+              <span className="release__version">v{release.version}</span>
+              {release.date}
             </p>
-            <ul style={{ margin: 0, paddingLeft: "1.25rem" }}>
-              {release.notes.map((note) => (
-                <li key={note} style={{ marginBottom: "var(--sp-2)" }}>
-                  {note}
-                </li>
-              ))}
-            </ul>
+            <div className="release__body">
+              <h2>{release.title}</h2>
+              <ul className="release__notes">
+                {release.notes.map((note) => (
+                  <li key={note}>{note}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
-
-        <p style={{ color: "var(--color-text-muted)" }}>
-          Full technical release notes live in the{" "}
-          <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
-            project repository
-            <span className="visually-hidden"> (opens in a new tab)</span>
-          </a>
-          . Questions about a release? <Link href="/support">Get support</Link>.
-        </p>
       </div>
+
+      <p className="release-note">
+        Full technical release notes live in the{" "}
+        <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer">
+          project repository
+          <span className="visually-hidden"> (opens in a new tab)</span>
+        </a>
+        . Questions about a release? <Link href="/support">Get support</Link>.
+      </p>
     </div>
   );
 }
