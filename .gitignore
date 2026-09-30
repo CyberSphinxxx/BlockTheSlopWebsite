@@ -32,3 +32,16 @@ next-env.d.ts
 evidence/artifacts/
 playwright-report/
 test-results/
+
+# design overhaul working directory & evidence
+design-overhaul/
+
+# local tooling / AI sessions
+.freebuff/
+
+# ide & editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
