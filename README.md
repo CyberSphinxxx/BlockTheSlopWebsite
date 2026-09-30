@@ -12,7 +12,8 @@ repository; this project never changes the extension's source, build, or release
 - Next.js 15 (App Router), strict TypeScript
 - React 19, minimal client JavaScript (theme switcher, mobile nav, FAQ disclosures)
 - Hand-written CSS with a 4-layer token system (palette → semantic themes → tokens → components)
-- Self-hosted Barlow Condensed (500/700) — **no** runtime Google Fonts requests
+- System UI font stack (`Segoe UI`, `system-ui`, …) — no font downloads and **no** runtime
+  Google Fonts requests
 - No analytics, no cookies, no forms, no database, no third-party embeds
 
 ## Getting started
