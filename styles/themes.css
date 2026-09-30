@@ -6,62 +6,53 @@
  *
  * "system" (the default when no choice is stored) resolves via the media
  * query below; "light" is the base map.
+ *
+ * Role meanings:
+ *   --color-border → interactive control boundaries (buttons, toggles, inputs)
+ *   --color-rule   → decorative separators (need not reach control contrast)
  */
-
 :root,
 :root[data-theme="light"],
 :root[data-theme="system"] {
-  --color-bg: var(--steel-100);
+  --color-bg: var(--snow-50);
   --color-surface: var(--white);
-  --color-surface-raised: var(--white);
-  --color-text: var(--ink-900);
-  --color-text-muted: var(--gray-600);
-  --color-border: var(--ink-900);
-  --color-rule: var(--gray-300);
-  --color-accent: var(--yellow-500);
+  --color-surface-raised: var(--snow-100);
+  --color-text: var(--ink-950);
+  --color-text-muted: var(--slate-700);
+  --color-border: var(--slate-500);
+  --color-rule: var(--mist-200);
+  --color-accent: var(--yellow-400);
   --color-on-accent: var(--ink-900);
-  --color-accent-hover: var(--yellow-400);
-  --color-focus: var(--ink-900);
-  --color-danger: var(--red-600);
-  --color-on-danger: var(--white);
-  --color-success: var(--green-700);
-  --color-screenshot-frame: var(--steel-200);
+  --color-accent-hover: var(--yellow-600);
+  --color-focus: var(--blue-800);
 }
 
 :root[data-theme="dark"] {
-  --color-bg: var(--steel-900);
-  --color-surface: var(--steel-800);
-  --color-surface-raised: var(--steel-800);
-  --color-text: var(--ink-100);
-  --color-text-muted: var(--gray-400);
-  --color-border: var(--gray-400);
-  --color-rule: var(--gray-700);
-  --color-accent: var(--yellow-500);
+  --color-bg: var(--charcoal-950);
+  --color-surface: var(--charcoal-900);
+  --color-surface-raised: var(--charcoal-800);
+  --color-text: var(--paper-50);
+  --color-text-muted: var(--mist-300);
+  --color-border: var(--slate-400);
+  --color-rule: var(--charcoal-600);
+  --color-accent: var(--yellow-400);
   --color-on-accent: var(--ink-900);
-  --color-accent-hover: var(--yellow-400);
-  --color-focus: var(--ink-100);
-  --color-danger: var(--red-300);
-  --color-on-danger: var(--ink-900);
-  --color-success: var(--green-300);
-  --color-screenshot-frame: var(--steel-800);
+  --color-accent-hover: var(--yellow-600);
+  --color-focus: var(--yellow-400);
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme="system"] {
-    --color-bg: var(--steel-900);
-    --color-surface: var(--steel-800);
-    --color-surface-raised: var(--steel-800);
-    --color-text: var(--ink-100);
-    --color-text-muted: var(--gray-400);
-    --color-border: var(--gray-400);
-    --color-rule: var(--gray-700);
-    --color-accent: var(--yellow-500);
+    --color-bg: var(--charcoal-950);
+    --color-surface: var(--charcoal-900);
+    --color-surface-raised: var(--charcoal-800);
+    --color-text: var(--paper-50);
+    --color-text-muted: var(--mist-300);
+    --color-border: var(--slate-400);
+    --color-rule: var(--charcoal-600);
+    --color-accent: var(--yellow-400);
     --color-on-accent: var(--ink-900);
-    --color-accent-hover: var(--yellow-400);
-    --color-focus: var(--ink-100);
-    --color-danger: var(--red-300);
-    --color-on-danger: var(--ink-900);
-    --color-success: var(--green-300);
-    --color-screenshot-frame: var(--steel-800);
+    --color-accent-hover: var(--yellow-600);
+    --color-focus: var(--yellow-400);
   }
 }
