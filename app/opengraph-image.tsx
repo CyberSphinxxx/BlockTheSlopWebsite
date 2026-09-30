@@ -13,32 +13,29 @@ export default function OpenGraphImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        background: "#17181b",
+        // Raw hex is required here: generated images render outside the CSS
+        // token layers. Values match the overhaul palette and the hazard
+        // stripe motif was retired with the redesign.
+        background: "#141618",
         padding: 72,
       }}
     >
-      <div
-        style={{
-          height: 12,
-          width: "100%",
-          backgroundImage: "repeating-linear-gradient(-45deg, #f2f2f2 0 14px, #ffc400 14px 28px)",
-        }}
-      />
+      <div style={{ height: 8, width: "100%", background: "#ffd21a" }} />
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <div
           style={{
             display: "flex",
             fontSize: 92,
             fontWeight: 700,
-            color: "#f2f2f2",
+            color: "#f5f6f7",
             letterSpacing: "-0.01em",
           }}
         >
           BlockThe
           <span
             style={{
-              background: "#ffc400",
-              color: "#17181b",
+              background: "#ffd21a",
+              color: "#151719",
               padding: "0 14px",
             }}
           >
@@ -48,7 +45,7 @@ export default function OpenGraphImage() {
         <div
           style={{
             fontSize: 40,
-            color: "#a6a8ad",
+            color: "#abb2bc",
             maxWidth: 860,
             lineHeight: 1.3,
           }}
@@ -61,7 +58,7 @@ export default function OpenGraphImage() {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          color: "#a6a8ad",
+          color: "#abb2bc",
           fontSize: 28,
         }}
       >
